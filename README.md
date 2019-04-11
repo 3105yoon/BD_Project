@@ -34,7 +34,7 @@ try:
     #-> 일반 게시물의 좋아요 수집방법
 except NoSuchElementException:
     like = "0"  
-    -> 좋아요 수가 0개인 게시글의 수집방법
+    #-> 좋아요 수가 0개인 게시글의 수집방법
     #-> 사용 시 코드 상단에 from selenium.common.exceptions import NoSuchElementException 필요  
 except:  
     driver2.find_element_by_class_name('vcOH2').click()
