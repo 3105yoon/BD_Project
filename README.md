@@ -28,14 +28,14 @@ Instagram Hashtag crawling
 **driver.find_element_by_class_name('_9AhH0').click()** : 첫 게시글 클릭  
 
 #### 좋아요 수집 방법 (try 문 사용) ####  
-try:  
+**try:**    
     like = **driver2.find_element_by_class_name('Nm9Fw').find_element_by_tag_name('span').text**  
     **-> 일반 게시물의 좋아요 수집방법**  
-except NoSuchElementException:  
+**except NoSuchElementException:**  
     like = "0"  
     **-> 좋아요 수가 0개인 게시글의 수집방법**  
     -> 사용 시 코드 상단에 **from selenium.common.exceptions import NoSuchElementException** 필요  
-except:
+**except:**  
     **driver2.find_element_by_class_name('vcOH2').click()**  
     like = **driver2.find_element_by_class_name('vJRqr').find_element_by_tag_name('span').text**  
     **-> 동영상의 경우 조회수를 클릭해야 좋아요수가 노출되기때문에 클릭후 수집하여야함.**  
