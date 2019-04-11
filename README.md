@@ -5,20 +5,21 @@ Instagram Hashtag crawling
 
 #코드 수정시 확인하고 업데이트
 
-### 변수명 ###
-userid : 작성자 id
-HashTags : 게시글의 해시태그들(댓글 포함)리스트 
-like : 게시글의 좋아요 갯수
-content : 게시글의 내용(광고글 제거 위해 수집 필요)
-writedata : 게시글의 작성 날짜
-tcnt : 검색 tag의 총 게시물 수
-keyword : 검색하고 싶은 태그명
-driver, driver2 : 크롬 웹드라이버 load 변수
-startcount : 크롤링 횟수 측정을 위한 변수 (시작)
-endcount : 크롤링 횟수 측정을 위한 변수 (종료)
-startTime : 크롤링 실행 시간 측정(시작시간)
-endTime : 크롤링 실행 시간 측정(종료시간)
-options : 크롬웹드라이버 사용시 브라우저를 숨기기 위한 옵션 지정 변수
+### 변수명 ###  
+userid : 작성자 id  
+HashTags : 게시글의 해시태그들(댓글 포함)리스트  
+like : 게시글의 좋아요 갯수  
+content : 게시글의 내용(광고글 제거 위해 수집 필요)  
+writedata : 게시글의 작성 날짜  
+tcnt : 검색 tag의 총 게시물 수  
+keyword : 검색하고 싶은 태그명  
+driver, driver2 : 크롬 웹드라이버 load 변수  
+startcount : 크롤링 횟수 측정을 위한 변수 (시작)  
+endcount : 크롤링 횟수 측정을 위한 변수 (종료)  
+startTime : 크롤링 실행 시간 측정(시작시간)  
+endTime : 크롤링 실행 시간 측정(종료시간)  
+options : 크롬웹드라이버 사용시 브라우저를 숨기기 위한 옵션 지정 변수  
+
 
 
 ### 사용하는 selenium 함수 ###
