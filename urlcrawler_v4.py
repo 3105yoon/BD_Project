@@ -73,7 +73,13 @@ while True:
         crawl_tag_list.append(tag)
         crawl_count_list.append(crcount)
 
-
+def thread_run1():
+    driver1.execute_script("window.scrollTo(0, 0);")
+    driver1.implicitly_wait(1)
+    time.sleep(1)
+    print("thread execute!")
+        
+    threading.Timer(15, thread_run1).start() 
 
 
 def main1():
@@ -81,8 +87,9 @@ def main1():
     addr1 = ""
     upcount1 = 0
     tag1 = ""
+    slicecount1 = ""
+    thread_run1()
     
-            
     for i in range(len(crawl_tag_list)):
         print(crawl_tag_list[i], " 을 ", crawl_count_list[i], "개 수집 시작")
         driver1.get(starturl+crawl_tag_list[i]) 
@@ -107,7 +114,7 @@ def main1():
                 for i in soup1.select('div:nth-child(3) > div > div > div > a'):
                     addr1 = "https://www.instagram.com" + i['href']
                     url_list1.append(addr1)
-        
+            print(len(url_list1))
                 
             if len(url_list1) >= slicecount1:
                 url_list1 = url_list1[:slicecount1]
@@ -122,19 +129,14 @@ def main1():
             reader1.writerow(data1) 
         csvfile1.close()
         
-def thread_run1():
-    driver1.execute_script("window.scrollTo(0, 0);")
-    driver1.implicitly_wait(1)
-    time.sleep(1)
-    print("thread execute!")
-        
-    threading.Timer(15, thread_run1).start() 
+    driver1.close()
+
 
 main1()
 
-thread_run1()
 
-driver1.close()
+
+
 
 endTime = time.time() - startTime
 print('끝났습니다. !! 걸린 시간은 : ',endTime) 
