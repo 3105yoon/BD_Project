@@ -29,7 +29,7 @@ options.add_argument("disable-infobars")
 options.add_argument("--disable-extensions")
 
 
-drvdir = "/project/03_Src/python/BD_Project/chromedriver" 
+drvdir = "/project/02_Software/webdrivers/chromedriver" 
 
 driver1 = webdriver.Chrome(drvdir, chrome_options=options) 
 
@@ -83,7 +83,7 @@ def thread_run1():
 
 
 def main1():
-    url_list1 = []
+    #url_list1 = []
     addr1 = ""
     upcount1 = 0
     tag1 = ""
@@ -91,12 +91,14 @@ def main1():
     thread_run1()
     
     for i in range(len(crawl_tag_list)):
+        url_list1 = []
         print(crawl_tag_list[i], " 을 ", crawl_count_list[i], "개 수집 시작")
         driver1.get(starturl+crawl_tag_list[i]) 
         driver1.implicitly_wait(3)
         time.sleep(3)
         tag1 = crawl_tag_list[i]
         slicecount1 = crawl_count_list[i]
+        
         while True:
             upcount1 += 1
         
