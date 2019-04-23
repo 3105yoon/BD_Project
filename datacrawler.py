@@ -10,15 +10,6 @@ from multiprocessing import Process
 startTime = time.time() 
 # 코드 실행 시간 측정(시작시간)
 
-
-filename = '연남동결과.csv'
-csvfile = open('./datalist/' + filename, 'w')
-reader = csv.writer(csvfile)
-reader.writerow(['작성자', '작성날짜', '게시글내용', '좋아요갯수', '댓글수', '해시태그'])
-
-
-
-
 options = webdriver.ChromeOptions()
 prefs = {'profile.default_content_setting_values': {'cookies'                   : 2, 'images': 2,
                                                     'plugins'                   : 2, 'popups': 2, 'geolocation': 2,
@@ -56,8 +47,28 @@ url_list2 = []
 url_list3 = []
 url_list4 = []
 
+#filename = '테스트결과'
+#savefilename = filename + ".csv"
+#csvfile = open('./datalist/' + savefilename, 'w')
+#reader = csv.writer(csvfile)
+#reader.writerow(['작성자', '작성날짜', '게시글내용', '좋아요갯수', '댓글수', '해시태그'])
+
+filename = '송내역맛집'
+readfilename = filename + ".csv"
+savefilename = filename + "결과.csv"
+
+head = open('./datalist/' + savefilename, 'w')
+header = csv.writer(head)
+header.writerow(['user', 'wdate', 'content', 'like', 'coment', 'hashtag'])
+head.close()
+
+savefile = open('./datalist/' + savefilename, 'a')
+resultsave = csv.writer(savefile)
+
 def list_slice():
-    urlfile = open('./datalist/연남동.csv', 'r')
+    global filename
+    readfilename = filename + ".csv"
+    urlfile = open('./datalist/urllist/'+readfilename, 'r')
     url_list_csv = csv.reader(urlfile)
     global url_list1
     global url_list2
@@ -175,7 +186,7 @@ def datacrawl1():
             #print("댓글 수 : ", cocount)
     
         try:
-            reader.writerow([UserId1, writedate1, content1, like1, cocount1, hashtag1])
+            resultsave.writerow([UserId1, writedate1, content1, like1, cocount1, hashtag1])
         except:
             continue
         
@@ -272,7 +283,7 @@ def datacrawl2():
             #print("댓글 수 : ", cocount)
     
         try:
-            reader.writerow([UserId2, writedate2, content2, like2, cocount2, hashtag2])
+            resultsave.writerow([UserId2, writedate2, content2, like2, cocount2, hashtag2])
         except:
             continue
         
@@ -367,7 +378,7 @@ def datacrawl3():
             #print("댓글 수 : ", cocount)
     
         try:
-            reader.writerow([UserId3, writedate3, content3, like3, cocount3, hashtag3])
+            resultsave.writerow([UserId3, writedate3, content3, like3, cocount3, hashtag3])
         except:
             continue
 
@@ -463,7 +474,7 @@ def datacrawl4():
             #print("댓글 수 : ", cocount)
     
         try:
-            reader.writerow([UserId4, writedate4, content4, like4, cocount4, hashtag4])
+            resultsave.writerow([UserId4, writedate4, content4, like4, cocount4, hashtag4])
         except:
             continue
         
@@ -484,7 +495,7 @@ p2.join()
 p3.join()
 p4.join()
 
-csvfile.close()
+savefile.close()
 driver1.close() 
 driver2.close()
 driver3.close()
@@ -494,8 +505,3 @@ driver4.close()
 
 endTime = time.time() - startTime
 print('걸린 시간은 : ',endTime) 
-
-
-
-        
-        
