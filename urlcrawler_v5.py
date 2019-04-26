@@ -63,8 +63,6 @@ crawl_tag_list.append(tag)
 crawl_count_list.append(crcount)
 
 url_list1 = []
-csvfile1 = open('./datalist/urllist/' + tag + '.csv' ,'w')
-reader1 = csv.writer(csvfile1)
 
 def thread_run1():
     driver1.execute_script("window.scrollTo(0, 0);")
@@ -113,22 +111,33 @@ def main1():
             url_list1.append(addr1)
         print(len(url_list1))
         
-        for save in range(len(url_list1)):
-            data1 = url_list1[save].split(",")
-            reader1.writerow(data1) 
-        
+                
         if len(url_list1) >= slicecount1:
             url_list1 = url_list1[:slicecount1]
             break
         else:
             continue
     
-        
+        csvfile1 = open('./datalist/urllist/' + tag + '.csv' ,'w')
+        reader1 = csv.writer(csvfile1)
+        for save in range(len(url_list1)):
+            data1 = url_list1[save].split(",")
+            reader1.writerow(data1) 
+        csvfile1.close()
         
 
-
-main1()
-csvfile1.close()
+try:
+    main1()
+except KeyboardInterrupt:
+    time.sleep(2)
+    csvfile1 = open('./datalist/urllist/' + tag + '.csv' ,'w')
+    reader1 = csv.writer(csvfile1)
+    for save in range(len(url_list1)):
+        data1 = url_list1[save].split(",")
+        reader1.writerow(data1) 
+    time.sleep(2)
+    csvfile1.close()
+    
 driver1.close()
 
 
